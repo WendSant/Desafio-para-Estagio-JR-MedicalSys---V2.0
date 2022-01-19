@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block 'titulo' %}Login{% endblock  %}
+
+{% block 'conteudo' %}
+
+<br />
+
+<div class="row">
+  <div class="col-md-3"></div>
+
+  <div class="col-md">
+    <h1>Entrar</h1>
+    <hr />
+
+    <form method="POST" action="{% url 'valida_login'%}" >
+      {% csrf_token %}
+      <br />
+      <label>Email</label>
+      <input
+        name="email"
+        class="form-control"
+        type="text"
+        placeholder="Email"
+      />
+      <br />
+      <label>Senha</label>
+      <input
+        name="senha"
+        class="form-control"
+        type="password"
+        placeholder="Senha"
+      />
+      <br />
+      <input class="btn btn-primary" type="submit" value="Entrar" />
+      <a href="{% url 'cadastrar' %}" class="btn btn-secondary">Cadastrar</a>
+    </form>
+  </div>
+
+  <div class="col-md-3"></div>
+</div>
+</div>
+
+
+{% endblock  %}
