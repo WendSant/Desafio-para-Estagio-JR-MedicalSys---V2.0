@@ -1,6 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.http import HttpResponse
 
 
-def cadastrar(request):
-    return HttpResponse('Hi')
+def home(request):
+    if request.session.get('medico'):
+        return HttpResponse('Hiii')
+    else:
+        return redirect('/auth/login/?status=2')

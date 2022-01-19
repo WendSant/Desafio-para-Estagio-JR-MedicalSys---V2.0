@@ -4,7 +4,8 @@ from .models import Medicos
 
 
 def login(request):
-    return render(request, 'login.html')
+    status = request.GET.get('status')
+    return render(request, 'login.html', {'status': status})
 
 
 def cadastrar(request):
@@ -46,6 +47,11 @@ def valida_login(request):
         return redirect('/auth/login/?status=1')
     elif len(medico) > 0:
         request.session['medico'] = medico[0].id
-        return redirect('')
+        return redirect('/paciente/home')
 
     return HttpResponse(f'{email} {senha}')
+
+
+def sair(request):
+    request.session.flush()
+    return redirect('/auth/login')
