@@ -11,3 +11,4 @@ class CadastroPaciente(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields['medico'].widget = forms.HiddenInput()
+        self.fields['data_criacao'].widget = forms.HiddenInput()

@@ -23,6 +23,7 @@ def ver_pacientes(request, id):
             medico_atual = Medicos.objects.all()
             form = CadastroPaciente()
             form.fields['medico'].initial = request.session['medico']
+            form.fields['data_criacao'].initial = request.session['medico']
 
             return render(request, 'ver_paciente.html', {'paciente': pacientes, 'medico_atual': medico_atual, 'medico_logado': request.session.get('medico'), 'form': form, 'id_paciente': id})
         else:
