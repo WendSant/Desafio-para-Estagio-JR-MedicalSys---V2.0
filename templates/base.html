@@ -1,19 +1,20 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
     {% block 'head' %} {% endblock %}
     <title>{% block 'titulo' %} {% endblock %}</title>
   </head>
   <body>
+  
     <nav class="navbar navbar-dark  bg-primary">
       <a class="navbar-brand" href="{% url 'home' %}">Clinica</a>
       {% if medico_logado %}
+      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
+        Cadastrar Paciente
+      </button>
       <a href="{% url 'sair' %}" class="btn btn-danger">Sair</a>
       {% else %}
       <a href="{% url 'sair' %}" class="btn btn-warning">Editar Médicos</a>
@@ -21,7 +22,30 @@
     </nav>
     {% block 'conteudo' %} {% endblock %}
 
+    {% if medico_logado %}
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Cadastrar paciente</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
 
+            <form action="{% url 'cadastrar_paciente' %}" method="POST">
+              {% csrf_token %}
+              <table>
+              {{form.as_table}}
+              </table>
+              <input type="submit" class="btn btn-success" value="Cadastrar Paciente">
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
 
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
