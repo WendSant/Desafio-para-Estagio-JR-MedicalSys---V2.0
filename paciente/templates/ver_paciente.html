@@ -1,13 +1,30 @@
 {% extends 'base.html' %}
 {% block 'titulo' %}Visualizar pacientes{% endblock 'titulo' %}
 {% block 'conteudo' %}
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Deseja mesmo excluir?</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <a href="{% url 'excluir_paciente' id_paciente %}" class="btn btn-danger">Sim, excluir paciente</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 <div style="padding-left: 100px; padding-right:100px; "  class="container">
     <br>
     <form action="#">
         {% csrf_token %}
         <p>
-        <label> Nome do paciente:</label>
-        <input style="width: 50%;" type="text" class="form-control" value="{{paciente.nome}}">
+            <label> Nome do paciente:</label>
+            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.nome}}">
         </p>
             <label> Nome do médico:</label>
             <select style="width: 50%;" name ="medico" class="form-control" >
@@ -50,8 +67,12 @@
             <input style="width: 50%;" type="text" class="form-control" value="{{paciente.data_criacao}}" readonly>
         </p>
         <br>
-        <input type="submit" class="btn btn-success btn-lg" value="Salvar">
+            <input style="display: inline-block;" type="submit" class="btn btn-success btn-lg" value="Salvar">
+        </form>
         <a href="{% url 'home' %}" class="btn btn-primary btn-lg" >Voltar</a>
-    </form/
+        <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#exampleModal2">
+            Excluir Paciente
+          </button>
+        <p>
     </div>
 {% endblock  %}
