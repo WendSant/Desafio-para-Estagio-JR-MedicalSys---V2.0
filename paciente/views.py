@@ -42,5 +42,8 @@ def cadastrar_paciente(request):
 
 
 def excluir_paciente(request, id):
-    paciente = Pacientes.objects.get(id=id).delete()
-    return redirect('/paciente/home/')
+    if request.session.get('medico'):
+        paciente = Pacientes.objects.get(id=id).delete()
+        return redirect('/paciente/home/')
+    else:
+        return HttpResponse('Error')
