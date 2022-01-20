@@ -1,15 +1,56 @@
 {% extends 'base.html' %}
 
 {% block 'conteudo' %}
-<div style="text-align: center;" class="container">
-    <h1>{{paciente.nome}}</h1>
-        <h2>{{paciente.medico}}</h2>
-        <h2>{{paciente.telefone}}</h2>
-        <h2>{{paciente.endereco}}</h2>
-        <h2>{{paciente.estado}}</h2>
-        <h2>{{paciente.cidade}}</h2>
-        <h2>{{paciente.territorio}}</h2>
-        <h2>{{paciente.cep}}</h2>
-        <h2>{{paciente.data_criacao}}</h2>
+<div style="padding-left: 100px; padding-right:100px; "  class="container">
+    <br>
+    <form action="#">
+        {%{% csrf_token %}%}
+        <p>
+        <label> Nome do paciente:</label>
+        <input style="width: 50%;" type="text" class="form-control" value="{{paciente.nome}}">
+        </p>
+            <label> Nome do médico:</label>
+            <select style="width: 50%;" name ="medico" class="form-control" >
+                {% for i in medico_atual %}
+                    {% if paciente.medico.nome == i.nome %}
+                        <option selected>{{i}}</option>
+                    {% else %}
+                        <option>{{i}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
+        <p style="font-size: 12px; margin-top: -1px;">
+            AVISO: Alterando o nome do médico este paciente ira sumir do painel do médico {{paciente.medico}}.
+        </p> 
+        <p>
+            <label> Telefone:</label>
+            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.telefone}}">
+        </p>
+        <p>
+            <label> Endereço:</label>
+            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.endereco}}">
+        </p>
+        <p>
+            <label> Estado:</label>
+            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.estado}}">
+        </p>
+        <p>
+            <label> Cidade:</label>
+            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.cidade}}">
+        </p>
+        <p>
+            <label> País:</label>
+            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.territorio}}">
+        </p>        
+            <label> CEP:</label>
+            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.cep}}">
+        </p> 
+        <p>
+            <label> Data de criação:</label>
+            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.data_criacao}}" readonly>
+        </p>
+        <br>
+        <input type="submit" class="btn btn-success btn-lg" value="Salvar">
+    </form/
     </div>
 {% endblock  %}
