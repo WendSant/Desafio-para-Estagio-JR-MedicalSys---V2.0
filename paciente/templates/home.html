@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block 'conteudo' %}
+<div class="container">
+    <br>
+    <div class="row">
+    {% for paciente in pacientes %}
+        <div class="col-md">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                  <h5 class="card-title">{{paciente.nome}}</h5>
+                  <h6 class="card-subtitle mb-2 text-muted">Médico: {{paciente.medico}}</h6>
+                  <h6 class="card-subtitle mb-2 text-muted">Cadastrado em: {{paciente.data_criacao}}</h6>
+                  <p class="card-text">Telefone: {{paciente.telefone}}<br>...</p>
+                  <br>
+                  <a href="{% url 'ver_pacientes' paciente.id %}" class="btn btn-dark">Visualizar paciente</a>
+                </div>
+              </div>
+        </div>
+    {% endfor %}
+    </div>
+</div>
+{% endblock  %}

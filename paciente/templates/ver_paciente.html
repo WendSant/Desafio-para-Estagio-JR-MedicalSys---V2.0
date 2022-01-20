@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block 'conteudo' %}
+<div style="text-align: center;" class="container">
+    <h1>{{paciente.nome}}</h1>
+        <h2>{{paciente.medico}}</h2>
+        <h2>{{paciente.telefone}}</h2>
+        <h2>{{paciente.endereco}}</h2>
+        <h2>{{paciente.estado}}</h2>
+        <h2>{{paciente.cidade}}</h2>
+        <h2>{{paciente.territorio}}</h2>
+        <h2>{{paciente.cep}}</h2>
+        <h2>{{paciente.data_criacao}}</h2>
+    </div>
+{% endblock  %}
