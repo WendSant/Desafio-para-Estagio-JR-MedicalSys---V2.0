@@ -13,6 +13,11 @@
   <body>
     <nav class="navbar navbar-dark  bg-primary">
       <a class="navbar-brand" href="{% url 'home' %}">Clinica</a>
+      {% if medico_logado %}
+      <a href="{% url 'sair' %}" class="btn btn-danger">Sair</a>
+      {% else %}
+      <a href="{% url 'sair' %}" class="btn btn-warning">Editar Médicos</a>
+      {% endif %}
     </nav>
     {% block 'conteudo' %} {% endblock %}
 
