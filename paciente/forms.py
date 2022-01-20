@@ -6,4 +6,8 @@ from .models import Pacientes
 class CadastroPaciente(forms.ModelForm):
     class Meta:
         model = Pacientes
-        fields = '__all__'
+        fields = "__all__"
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['medico'].widget = forms.HiddenInput()

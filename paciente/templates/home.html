@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-
+{% block 'titulo' %}Pacientes{% endblock 'titulo' %}
 {% block 'conteudo' %}
 <div class="container">
     <br>
@@ -17,8 +17,9 @@
                   <a href="{% url 'ver_pacientes' paciente.id %}" class="btn btn-dark">Visualizar paciente</a>
                 </div>
               </div>
+              <br>
         </div>
-    {% endfor %}
+        {% endfor %}
+      </div>
     </div>
-</div>
 {% endblock  %}

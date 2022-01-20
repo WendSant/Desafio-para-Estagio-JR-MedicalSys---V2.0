@@ -10,6 +10,7 @@ def home(request):
         medico = Medicos.objects.get(id=request.session['medico'])
         pacientes = Pacientes.objects.filter(medico=medico)
         form = CadastroPaciente()
+        form.fields['medico'].initial = request.session['medico']
         return render(request, 'home.html', {'pacientes': pacientes, 'medico_logado': request.session.get('medico'), 'form': form})
     else:
         return redirect('/auth/login/?status=2')
@@ -21,6 +22,7 @@ def ver_pacientes(request, id):
         if request.session.get('medico') == pacientes.medico.id:
             medico_atual = Medicos.objects.all()
             form = CadastroPaciente()
+            form.fields['medico'].initial = request.session['medico']
 
             return render(request, 'ver_paciente.html', {'paciente': pacientes, 'medico_atual': medico_atual, 'medico_logado': request.session.get('medico'), 'form': form})
         else:
@@ -34,6 +36,6 @@ def cadastrar_paciente(request):
 
         if form.is_valid():
             form.save()
-            return HttpResponse('SALVADO')
+            return redirect('/paciente/home')
         else:
             return HttpResponse('DADOS INVALIDOS')
