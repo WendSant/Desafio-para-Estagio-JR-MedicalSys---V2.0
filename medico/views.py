@@ -4,11 +4,15 @@ from .models import Medicos
 
 
 def login(request):
+    if request.session.get('medico'):
+        return redirect('/paciente/home/')
     status = request.GET.get('status')
     return render(request, 'login.html', {'status': status})
 
 
 def cadastrar(request):
+    if request.session.get('medico'):
+        return redirect('/paciente/home/')
     status = request.GET.get('status')
     return render(request, 'cadastro.html', {'status': status})
 

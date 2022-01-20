@@ -4,7 +4,7 @@
 <div style="padding-left: 100px; padding-right:100px; "  class="container">
     <br>
     <form action="#">
-        {%{% csrf_token %}%}
+        {% csrf_token %}
         <p>
         <label> Nome do paciente:</label>
         <input style="width: 50%;" type="text" class="form-control" value="{{paciente.nome}}">
