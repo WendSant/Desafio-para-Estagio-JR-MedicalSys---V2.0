@@ -13,10 +13,18 @@
     <nav class="navbar navbar-dark  bg-primary">
       <a class="navbar-brand" href="{% url 'home' %}">Clinica</a>
       {% if medico_logado %}
-      <button type="button" class="btn btn-dark" data-toggle="modal" data-target="#exampleModal">
-        Cadastrar Paciente
-      </button>
-      <a href="{% url 'sair' %}" class="btn btn-danger">Sair</a>
+      <div class="dropdown show">
+        <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+        </a>
+      
+        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuLink">
+
+          <button type="button" class="btn btn-dark dropdown-item" data-toggle="modal" data-target="#exampleModal">Cadastrar Paciente</button>
+          <div class="dropdown-divider"></div>
+          <a href="{% url 'sair' %}" class="btn btn-danger dropdown-item">Sair</a>
+        </div>
+      </div>
       {% else %}
       <a href="{% url 'home_medico'%}" class="btn btn-warning">Editar Médicos</a>
       {% endif %}
