@@ -20,25 +20,14 @@
 
 <div style="padding-left: 100px; padding-right:100px; "  class="container">
     <br>
+    <h2>Paciente de: {{paciente.medico.nome}}</h2>
+    <h4> Data de criação: {{paciente.data_criacao}}</h3>
     <form action="#" method="POST">
         {% csrf_token %}
         <p>
             <label> Nome do paciente:</label>
             <input style="width: 50%;" type="text" class="form-control" value="{{paciente.nome}}">
         </p>
-            <label> Nome do médico:</label>
-            <select style="width: 50%;" name ="medico" class="form-control" >
-                {% for i in medico_atual %}
-                    {% if paciente.medico.nome == i.nome %}
-                        <option selected>{{i}}</option>
-                    {% else %}
-                        <option>{{i}}</option>
-                    {% endif %}
-                {% endfor %}
-            </select>
-        <p style="font-size: 12px; margin-top: -1px;">
-            AVISO: Alterando o nome do médico este paciente ira sumir do painel do médico {{paciente.medico}}.
-        </p> 
         <p>
             <label> Telefone:</label>
             <input style="width: 50%;" type="text" class="form-control" value="{{paciente.telefone}}">
@@ -62,17 +51,13 @@
             <label> CEP:</label>
             <input style="width: 50%;" type="text" class="form-control" value="{{paciente.cep}}">
         </p> 
-        <p>
-            <label> Data de criação:</label>
-            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.data_criacao}}" readonly>
-        </p>
         <br>
             <input style="display: inline-block;" type="submit" class="btn btn-success btn-lg" value="Salvar">
+            <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#exampleModal2">
+                Excluir Paciente
+              </button>
+              <a href="{% url 'home' %}" class="btn btn-primary btn-lg" >Voltar</a>
         </form>
-        <a href="{% url 'home' %}" class="btn btn-primary btn-lg" >Voltar</a>
-        <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#exampleModal2">
-            Excluir Paciente
-          </button>
         <p>
     </div>
 {% endblock  %}
