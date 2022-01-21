@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.http import HttpResponse
 from .models import Medicos
 from paciente.models import Pacientes
@@ -80,3 +80,13 @@ def excluir_medico(request, id):
     Pacientes.objects.filter(medico=medicos).delete()
     medico = Medicos.objects.get(id=id).delete()
     return redirect('/auth/home_medico/?medico_excluido=1')
+
+
+def alterar_medico(request):
+    medico_id = request.POST.get('medico_id')
+    medico = get_object_or_404(Medicos, id=medico_id)
+    medico.nome = request.POST.get('medico_nome')
+    medico.email = request.POST.get('medico_email')
+    medico.senha = request.POST.get('medico_senha')
+    medico.save()
+    return redirect(f'/auth/ver_medico/{medico_id}')

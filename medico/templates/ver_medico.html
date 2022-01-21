@@ -33,30 +33,29 @@
         <br>
         <div style="padding-left: 100px; padding-right:100px; "  class="container">
             <br>
-            <form action="#">
+            <form action="{% url 'alterar_medico' %}" method="POST">
                 {% csrf_token %}
+                <input type="hidden" value="{{medico.id}}" name="medico_id">
                 <p>
                     <label> Nome do médico:</label>
-                    <input style="width: 50%;" type="text" class="form-control" value="{{medico.nome}}">
+                    <input style="width: 50%;" type="text" class="form-control" value="{{medico.nome}}" name="medico_nome">
                 </p>
                 <p>
-                    <label> Telefone:</label>
-                    <input style="width: 50%;" type="text" class="form-control" value="{{medico.email}}">
+                    <label> Email:</label>
+                    <input style="width: 50%;" type="text" class="form-control" value="{{medico.email}}" name="medico_email">
                 </p>
                 <p>
-                    <label> Endereço:</label>
-                    <input style="width: 50%;" type="text" class="form-control" value="{{medico.senha}}">
+                    <label> Senha:</label>
+                    <input style="width: 50%;" type="password" class="form-control" value="{{medico.senha}}" name="medico_senha">
                 <p>
                     <label> Data de criação:</label>
                     <input style="width: 50%;" type="text" class="form-control" value="{{medico.data_criacao}}" readonly>
                 </p>
                 <br>
                     <input style="display: inline-block;" type="submit" class="btn btn-success btn-lg" value="Salvar">
+                    <a href="{% url 'home_medico' %}" class="btn btn-warning btn-lg" >Cancelar e voltar</a>
+                    <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#exampleModal3">Excluir Médico</button>
                 </form>
-                <a href="{% url 'home_medico' %}" class="btn btn-warning btn-lg" >Cancelar e voltar</a>
-                <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#exampleModal3">
-                  Excluir Médico
-                </button>
               <p>
                 <p>
             </div>
