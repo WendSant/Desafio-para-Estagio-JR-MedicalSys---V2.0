@@ -8,7 +8,11 @@
   <div class="alert alert-danger" role="alert">
     Médico invalido!
   </div>
-{% endif %}
+  {% elif cadastro_paciente == '2' %}
+  <div class="alert alert-danger" role="alert">
+    Paciente não pertence a este médico!
+  </div>
+  {% endif %}
     <br>
     <div class="row">
     {% for paciente in pacientes %}
