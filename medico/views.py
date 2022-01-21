@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Medicos
+from paciente.models import Pacientes
+from paciente.views import excluir_paciente
 
 
 def login(request):
@@ -58,7 +60,8 @@ def valida_login(request):
 
 def home_medico(request):
     medicos = Medicos.objects.all()
-    return render(request, 'home_medico.html', {'medicos': medicos})
+    medico_excluido = request.GET.get('medico_excluido')
+    return render(request, 'home_medico.html', {'medicos': medicos, 'medico_excluido': medico_excluido})
 
 
 def ver_medicos(request, id):
@@ -70,3 +73,10 @@ def ver_medicos(request, id):
 def sair(request):
     request.session.flush()
     return redirect('/auth/login')
+
+
+def excluir_medico(request, id):
+    medicos = Medicos.objects.get(id=id)
+    Pacientes.objects.filter(medico=medicos).delete()
+    medico = Medicos.objects.get(id=id).delete()
+    return redirect('/auth/home_medico/?medico_excluido=1')

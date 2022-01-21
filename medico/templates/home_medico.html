@@ -16,6 +16,12 @@
       </nav>
 
     <div class="container">
+      <br>
+      {% if medico_excluido == '1' %}
+      <div class="alert alert-success" role="alert">
+        Médico apagado!
+      </div>
+      {% endif %}
         <br>
         <div class="row">
             {% for medico in medicos %}

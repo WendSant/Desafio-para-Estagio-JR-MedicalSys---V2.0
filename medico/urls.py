@@ -9,7 +9,8 @@ urlpatterns = [
     path('valida_login', views.valida_login, name='valida_login'),
     path('sair/', views.sair, name='sair'),
     path('home_medico/', views.home_medico, name='home_medico'),
-    path('ver_medico/<int:id>', views.ver_medicos, name="ver_medicos")
+    path('ver_medico/<int:id>', views.ver_medicos, name="ver_medicos"),
+    path('excluir_medico/<int:id>', views.excluir_medico, name="excluir_medico")
 
 
 ]
