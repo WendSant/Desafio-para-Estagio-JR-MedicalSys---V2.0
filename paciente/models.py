@@ -10,6 +10,7 @@ class Pacientes(models.Model):
     telefone = models.CharField(max_length=20)
     cep = models.CharField(max_length=10)
     endereco = models.CharField(max_length=50)
+    numero = models.CharField(max_length=10)
     estado = models.CharField(max_length=2)
     cidade = models.CharField(max_length=20)
     territorio = models.CharField(max_length=20, default="Brasil")

@@ -66,6 +66,7 @@ def alterar_paciente(request):
     paciente_telefone = request.POST.get('paciente_telefone')
     paciente_cep = request.POST.get('paciente_cep')
     paciente_endereco = request.POST.get('paciente_endereco')
+    paciente_numero = request.POST.get('paciente_numero')
     paciente_estado = request.POST.get('paciente_estado')
     paciente_cidade = request.POST.get('paciente_cidade')
     paciente_territorio = request.POST.get('paciente_territorio')
@@ -76,6 +77,7 @@ def alterar_paciente(request):
         paciente.telefone = paciente_telefone
         paciente.cep = paciente_cep
         paciente.endereco = paciente_endereco
+        paciente.numero = paciente_numero
         paciente.estado = paciente_estado
         paciente.cidade = paciente_cidade
         paciente.territorio = paciente_territorio
