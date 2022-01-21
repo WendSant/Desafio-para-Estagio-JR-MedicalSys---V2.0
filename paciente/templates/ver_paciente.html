@@ -22,35 +22,37 @@
     <br>
     <h2>Paciente de: {{paciente.medico.nome}}</h2>
     <h4> Data de criação: {{paciente.data_criacao}}</h3>
-    <form action="#" method="POST">
+    <form action="{% url 'alterar_paciente' %}" method="POST">
         {% csrf_token %}
+        <input type="hidden" value="{{paciente.id}}" name="paciente_id">
         <p>
             <label> Nome do paciente:</label>
-            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.nome}}">
+            <input style="width: 50%;" type="text" class="form-control"  value="{{paciente.nome}}" name="paciente_nome">
         </p>
         <p>
             <label> Telefone:</label>
-            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.telefone}}">
+            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.telefone}}" name="paciente_telefone">
         </p>
+        <p>      
+            <label> CEP:</label>
+            <input style="width: 50%;" type="text" class="form-control"id="id_cep" value="{{paciente.cep}}" name="paciente_cep">
+        </p> 
         <p>
             <label> Endereço:</label>
-            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.endereco}}">
+            <input style="width: 50%;" type="text" class="form-control" id="id_endereco" value="{{paciente.endereco}}" name="paciente_endereco">
         </p>
         <p>
             <label> Estado:</label>
-            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.estado}}">
+            <input style="width: 50%;" type="text" class="form-control" id="id_estado" value="{{paciente.estado}}" name="paciente_estado">
         </p>
         <p>
             <label> Cidade:</label>
-            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.cidade}}">
+            <input style="width: 50%;" type="text" class="form-control" id="id_cidade" value="{{paciente.cidade}}" name="paciente_cidade">
         </p>
         <p>
             <label> País:</label>
-            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.territorio}}">
-        </p>        
-            <label> CEP:</label>
-            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.cep}}">
-        </p> 
+            <input style="width: 50%;" type="text" class="form-control" value="{{paciente.territorio}}"  name="paciente_territorio">
+        </p>  
         <br>
             <input style="display: inline-block;" type="submit" class="btn btn-success btn-lg" value="Salvar">
             <button type="button" class="btn btn-danger btn-lg" data-toggle="modal" data-target="#exampleModal2">
