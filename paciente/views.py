@@ -20,11 +20,11 @@ def ver_pacientes(request, id):
     if request.session.get('medico'):
         pacientes = Pacientes.objects.get(id=id)
         if request.session.get('medico') == pacientes.medico.id:
+
             medico_atual = Medicos.objects.all()
             form = CadastroPaciente()
             form.fields['medico'].initial = request.session['medico']
             form.fields['data_criacao'].initial = request.session['medico']
-
             return render(request, 'ver_paciente.html', {'paciente': pacientes, 'medico_atual': medico_atual, 'medico_logado': request.session.get('medico'), 'form': form, 'id_paciente': id})
         else:
             return HttpResponse('Paciente não pertence a este medico')
@@ -34,12 +34,17 @@ def ver_pacientes(request, id):
 def cadastrar_paciente(request):
     if request.method == 'POST':
         form = CadastroPaciente(request.POST)
-
-        if form.is_valid():
-            form.save()
-            return redirect('/paciente/home')
+        if int(request.POST.get('medico')) == int(request.session.get('medico')):
+            print(request.POST.get('medico'))
+            if form.is_valid():
+                form.save()
+                return redirect('/paciente/home')
+            else:
+                return redirect('/paciente/home/?status=1')
         else:
-            return HttpResponse('DADOS INVALIDOS')
+            return redirect('/paciente/home/?status=1')
+    else:
+        return redirect('/paciente/home/?status=1')
 
 
 def excluir_paciente(request, id):
