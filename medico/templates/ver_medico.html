@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+    <title>Médicos</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-dark  bg-primary">
+        <a class="navbar-brand" href="{% url 'home' %}">Clinica</a>
+        <a href="{% url 'cadastrar' %}" class="btn btn-secondary">Cadastrar médico</a>
+
+        
+      </nav>
+
+    <div class="container">
+        <br>
+        <div style="padding-left: 100px; padding-right:100px; "  class="container">
+            <br>
+            <form action="#">
+                {% csrf_token %}
+                <p>
+                    <label> Nome do médico:</label>
+                    <input style="width: 50%;" type="text" class="form-control" value="{{medico.nome}}">
+                </p>
+                <p>
+                    <label> Telefone:</label>
+                    <input style="width: 50%;" type="text" class="form-control" value="{{medico.email}}">
+                </p>
+                <p>
+                    <label> Endereço:</label>
+                    <input style="width: 50%;" type="text" class="form-control" value="{{medico.senha}}">
+                <p>
+                    <label> Data de criação:</label>
+                    <input style="width: 50%;" type="text" class="form-control" value="{{medico.data_criacao}}" readonly>
+                </p>
+                <br>
+                    <input style="display: inline-block;" type="submit" class="btn btn-success btn-lg" value="Salvar">
+                </form>
+                <a href="{% url 'home_medico' %}" class="btn btn-danger btn-lg" >Cancelar e voltar</a>
+                <p>
+            </div>
+    </div>
+    
+      </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+

@@ -17,7 +17,7 @@
       </button>
       <a href="{% url 'sair' %}" class="btn btn-danger">Sair</a>
       {% else %}
-      <a href="{% url 'sair' %}" class="btn btn-warning">Editar Médicos</a>
+      <a href="{% url 'home_medico'%}" class="btn btn-warning">Editar Médicos</a>
       {% endif %}
     </nav>
     {% block 'conteudo' %} {% endblock %}

@@ -56,6 +56,17 @@ def valida_login(request):
     return HttpResponse(f'{email} {senha}')
 
 
+def home_medico(request):
+    medicos = Medicos.objects.all()
+    return render(request, 'home_medico.html', {'medicos': medicos})
+
+
+def ver_medicos(request, id):
+    medicos = Medicos.objects.get(id=id)
+
+    return render(request, 'ver_medico.html', {'medico': medicos, 'id_medico': id})
+
+
 def sair(request):
     request.session.flush()
     return redirect('/auth/login')
