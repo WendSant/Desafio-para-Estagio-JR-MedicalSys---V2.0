@@ -8,10 +8,11 @@ from .forms import CadastroPaciente
 def home(request):
     if request.session.get('medico'):
         medico = Medicos.objects.get(id=request.session['medico'])
+        cadastro_paciente = request.GET.get('cadastro_paciente')
         pacientes = Pacientes.objects.filter(medico=medico)
         form = CadastroPaciente()
         form.fields['medico'].initial = request.session['medico']
-        return render(request, 'home.html', {'pacientes': pacientes, 'medico_logado': request.session.get('medico'), 'form': form})
+        return render(request, 'home.html', {'pacientes': pacientes, 'medico_logado': request.session.get('medico'), 'form': form, 'cadastro_paciente': cadastro_paciente})
     else:
         return redirect('/auth/login/?status=2')
 
@@ -40,11 +41,11 @@ def cadastrar_paciente(request):
                 form.save()
                 return redirect('/paciente/home')
             else:
-                return redirect('/paciente/home/?status=1')
+                return redirect('/paciente/home/?cadastro_paciente=1')
         else:
-            return redirect('/paciente/home/?status=1')
+            return redirect('/paciente/home/?cadastro_paciente=1')
     else:
-        return redirect('/paciente/home/?status=1')
+        return redirect('/paciente/home/?cadastro_paciente=1')
 
 
 def excluir_paciente(request, id):

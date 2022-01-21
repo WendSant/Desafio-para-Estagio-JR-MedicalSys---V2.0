@@ -3,6 +3,12 @@
 {% block 'titulo' %}Pacientes{% endblock 'titulo' %}
 {% block 'conteudo' %}
 <div class="container">
+  <br>
+  {% if cadastro_paciente == '1' %}
+  <div class="alert alert-danger" role="alert">
+    Médico invalido!
+  </div>
+{% endif %}
     <br>
     <div class="row">
     {% for paciente in pacientes %}
