@@ -1,1 +1,1 @@
-web: gunicorn Clinica.wsgi
+web: gunicorn clinica.wsgi
