@@ -34,6 +34,10 @@ $ sudo apt-get install python-pip
 ```
 $ pip install virtualenv
 ```
+- <p style="font-size: 15px;" > Crie a venv utilizando o virtualenv com o seguinte comando: </>
+```
+$ virtualenv venv
+```
 - <p style="font-size: 15px;" > Após isso é hora de iniciar o ambiente virtual</>
 ```
 $ source venv/bin/activate 
