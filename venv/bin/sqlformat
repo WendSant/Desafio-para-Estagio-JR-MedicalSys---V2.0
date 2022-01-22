@@ -1,4 +1,4 @@
-#!/home/wend/Clinica/venv/bin/python3
+#!/home/wend/Clinica/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys
