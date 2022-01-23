@@ -20,7 +20,7 @@
 
 <div align="center">
 
-### Para quem deseja rodar a aplicação em sua maquina uma breve explicação sobre como subir ela. A aplicação foi feita em ambiente Linux(Ubunto 20.04)
+### Para quem deseja rodar a aplicação em sua maquina uma breve explicação sobre como subir ela. A aplicação foi feita em ambiente Linux(Ubuntu 20.04)
 
 </div>
 <br>
